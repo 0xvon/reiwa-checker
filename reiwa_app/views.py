@@ -1,20 +1,30 @@
 from django.shortcuts import render,redirect, HttpResponse
 from .forms import DocumentForm
-from .models import Document
+from .models import Document, Result
+import numpy as np
+from repository.api import *
+import cv2
 
 
-def index(request):
-    return HttpResponse('hello')
- 
+# global data
+
 
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
+        global data
+        data = request.POST
+        print(form)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('result')
     else:
         form = DocumentForm()
     return render(request, 'reiwa_app/model_form_upload.html', {
         'form': form
     })
+
+def show_result(request):
+    a = np.random.rand(1)
+    
+    return HttpResponse(str(a[0]))
