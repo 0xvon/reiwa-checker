@@ -7,14 +7,19 @@
     <div class="hero-body">
         <b class="hero-heading">令和類似度チェッカー</b>
         <div class="judgement-result">
-            {{ data }}
+            <img src="media/documents/{{ data }}" class="judged-img" width="200" height="auto" style="margin: 20px;">
+            <p><b class="similarity-desc">類似度は</b></p>
+            <p><b><span class="rate" style="font-size: 50px;">{{ similarity }}</span>%</b></p>
+        </div>
+        <div class="again">
+                <a class="again-button" href="/"><button class="upload-button" type="submit">もう一度チャレンジ</button></a>
         </div>
         <div class="share-form">
             <b class="share-p">みんなにシェアしよう！</b>
             <div class="share-items">
-                <a class="share-item" href="https://www.facebook.com/sharer/sharer.php?u=https://aidemy.net"><img src="../../static/reiwa_app/assets/fb.png" alt="fb-share-button" width="100"></a>
-                <a class="share-item" href="http://twitter.com/share?url=https://aidemy.net"><img src="../../static/reiwa_app/assets/twitter.png" alt="twitter-share-button" width="100"></a>
-                <a class="share-item" href="http://line.me/R/msg/text/https://aidemy.net"><img src="../../static/reiwa_app/assets/line.png" alt="line-share-button" width="100"></a>
+                <a class="share-item" href="https://www.facebook.com/sharer/sharer.php?u=https://reiwa-checker.herokuapp.com"><img src="../../static/reiwa_app/assets/fb.png" alt="fb-share-button" width="100"></a>
+                <a class="share-item" href="http://twitter.com/share?url=https://reiwa-checker.herokuapp.com"><img src="../../static/reiwa_app/assets/twitter.png" alt="twitter-share-button" width="100"></a>
+                <a class="share-item" href="http://line.me/R/msg/text/https://reiwa-checker.herokuapp.com"><img src="../../static/reiwa_app/assets/line.png" alt="line-share-button" width="100"></a>
             </div>
         </div>
     </div>

@@ -64,8 +64,13 @@
     /* margin: auto; */
 }
 
-.share-item {
-    /* margin: 20px; */
-    /* width: 200px;
-    height: auto; */
+.judgement-result {
+    font-family: Hiragino Kaku Gothic Pro;
+    font-size: 30px;
+    margin: 30px;
+}
+
+.again-button {
+    text-decoration: none;
+    color: white;
 }
