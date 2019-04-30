@@ -13,7 +13,7 @@ def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         global data
-        data = request.POST
+        data = request.POST.get()
         print(form)
         if form.is_valid():
             form.save()
@@ -26,5 +26,6 @@ def model_form_upload(request):
 
 def show_result(request):
     a = np.random.rand(1)
-    
-    return HttpResponse(str(a[0]))
+    return render(request, 'reiwa_app/result.html', {
+        'data': data
+    })

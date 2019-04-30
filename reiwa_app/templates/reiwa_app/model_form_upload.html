@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Upload</title>
-</head>
-<body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-</body>
-</html>
+<!-- base.html内に展開する -->
+{% extends "reiwa_app/base.html" %}
+<!-- CSSを読み込む -->
+{% load static %}
+{% block content %}
+<section class="hero is-medium">
+    <div class="hero-body">
+        <b class="hero-heading">令和類似度チェッカー</b>
+        <div class="description">
+            <p>あなたの書いた「令和」が菅官房長官の持っていた「令和」とどれだけ類似度が近いか判定します。80%以上でAidemyクーポンを発行！</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="up-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <button class="upload-button" type="submit">類似度チェック</button>
+        </form>
+    </div>
+</section>
+    
+{% endblock content %}

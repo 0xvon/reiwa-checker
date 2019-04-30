@@ -1,0 +1,71 @@
+
+.hero {
+    text-align: center;
+    color: white;
+    font-family: Hiragino Kaku Gothic Pro;
+    background: #76B55B;
+    margin: au†ø;
+}
+
+.hero-heading {
+    font-size: 40px;
+    font-family: Hiragino Kaku Gothic Pro;
+    color: white;
+}
+
+@media screen and (max-width:768px) {
+    .hero-heading {
+        font-size: 30px;
+    }
+}
+
+.description {
+    width: 70%;
+    margin: 50px auto;
+}
+
+.up-form {
+    background: white;
+    color: black;
+    padding: 20px;
+    width: calc(200px + 5vw);
+    margin: auto;
+}
+
+.upload-button {
+    background: #E29D53;
+    padding: 10px 25px;
+    color: white;
+    margin: 35px;
+    border: white 2px solid;
+    border-radius: 60px;
+    font-size: 18px;
+}
+
+.share-form {
+    width: calc(300px + 5vw);
+    margin: 80px auto;
+    padding: 20px 10px;
+    background: white;
+    color: black;
+}
+
+.share-p {
+    font-size: 20px;
+}
+
+.share-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    /* margin: auto; */
+}
+
+.share-item {
+    /* margin: 20px; */
+    /* width: 200px;
+    height: auto; */
+}
