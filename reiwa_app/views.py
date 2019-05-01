@@ -21,6 +21,9 @@ def model_form_upload(request):
     })
 
 def result(request):
+    if request.method == 'POST':
+        return redirect('upload')
+        
     reiwa_path = cv2.imread("reiwa_app/static/reiwa_app/assets/reiwa.jpg")
     image_path = cv2.imread("media/documents/" + str(file_path))
     reiwa_path = cv2.resize(reiwa_path, (32, 32))
@@ -34,3 +37,5 @@ def result(request):
                 'image_path': image_path,
                 'reiwa_path': reiwa_path
             })
+    
+    
