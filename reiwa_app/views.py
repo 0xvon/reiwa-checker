@@ -13,8 +13,8 @@ from PIL import Image
 def model_form_upload(request):
     global input_path
     global form
-    shutil.rmtree('media/documents')
-    os.mkdir('media/documents')
+    # shutil.rmtree('media/documents')
+    # os.mkdir('media/documents')
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         # max_id = Document.objects.latest('id').id
@@ -52,7 +52,7 @@ def calc(request):
 
 def result(request):
     if request.method == 'POST':
-        # os.remove(input_path)
+        os.remove(input_path)
         return redirect('upload')
     return render(request, 'reiwa_app/result.html', {
                 'data': input_path,
