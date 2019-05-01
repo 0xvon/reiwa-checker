@@ -21,6 +21,7 @@
             <div class="up-form">
                 {% csrf_token %}
                 {{ form.as_p }}
+                {{ path }}
             </div>
             <button class="upload-button" type="submit">類似度チェック</button>
         </form>
