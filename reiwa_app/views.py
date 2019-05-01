@@ -1,21 +1,33 @@
 from django.shortcuts import render,redirect, HttpResponse
 from .forms import DocumentForm
 from .models import Document
+from reiwa_prj import settings
 import numpy as np
 import cv2
 import numpy as np
+from PIL import Image
 
 
 def model_form_upload(request):
+    global input_path
+    global obj
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
-        global file_path
-        file_path = request.FILES['document']
+        # max_id = Document.objects.latest('id').id
+        # obj = Document.objects.get(id=0)
+        # input_path = settings.BASE_DIR + obj.photo.url
+        input_path = settings.MEDIA_URL + "documents/" + str(request.FILES['photo'])
+
         if form.is_valid():
             form.save()
             return redirect('result')
     else:
         form = DocumentForm()
+        # max_id = Document.objects.latest('id').id
+        # obj = Document.objects.get(id = max_id)
+        # input_path = settings.BASE_DIR + obj.photo.url
+        # input_path = settings.BASE_DIR + request.FILES
+
     return render(request, 'reiwa_app/model_form_upload.html', {
         'form': form
     })
@@ -23,19 +35,17 @@ def model_form_upload(request):
 def result(request):
     if request.method == 'POST':
         return redirect('upload')
-        
+
     reiwa_path = cv2.imread("reiwa_app/static/reiwa_app/assets/reiwa.jpg")
-    image_path = cv2.imread("media/documents/" + str(file_path))
+    image_path = cv2.imread(input_path)
     reiwa_path = cv2.resize(reiwa_path, (32, 32))
     image_path = cv2.resize(image_path, (32, 32))
     reiwa_path = np.ravel(reiwa_path)
     image_path = np.ravel(image_path)
     similarity = round(1e7 * np.dot(image_path, reiwa_path) / (np.linalg.norm(image_path) * np.linalg.norm(reiwa_path)))
     return render(request, 'reiwa_app/result.html', {
-                'data': file_path,
+                'data': input_path,
                 'similarity': similarity,
-                'image_path': image_path,
-                'reiwa_path': reiwa_path
             })
     
     

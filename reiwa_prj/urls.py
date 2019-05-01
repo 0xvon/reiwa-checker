@@ -25,6 +25,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('reiwa_app.urls')),
-    # url(r'^documents/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

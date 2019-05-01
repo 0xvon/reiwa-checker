@@ -7,7 +7,8 @@
     <div class="hero-body">
         <b class="hero-heading">令和類似度チェッカー</b>
         <div class="judgement-result">
-            <img src="media/documents/{{ data }}" class="judged-img" width="200" height="auto" style="margin: 20px;">
+            <img src="{{ data }}" class="judged-img" width="200" height="auto" style="margin: 20px;">
+            {{ data }}
             <p><b class="similarity-desc">類似度は</b></p>
             <p><b><span class="rate" style="font-size: 50px;">{{ similarity }}</span>%</b></p>
         </div>
