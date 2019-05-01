@@ -5,6 +5,7 @@ from reiwa_prj import settings
 import numpy as np
 import cv2
 import os
+import time
 import numpy as np
 
 
@@ -22,6 +23,7 @@ def model_form_upload(request):
         if form.is_valid():
             form.save()
             form = DocumentForm()
+            time.sleep(3)
             return redirect('calc')
     else:
         form = DocumentForm()
@@ -39,6 +41,7 @@ def calc(request):
     image_path = np.ravel(image_path)
     global similarity
     similarity = round(1e7 * np.dot(image_path, reiwa_path) / (np.linalg.norm(image_path) * np.linalg.norm(reiwa_path)))
+    time.sleep(5)
     return redirect('result')
     # return render(request, 'reiwa_app/model_form_upload.html', {
     #     'form': form,
