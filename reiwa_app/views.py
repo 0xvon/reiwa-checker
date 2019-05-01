@@ -5,9 +5,7 @@ from reiwa_prj import settings
 import numpy as np
 import cv2
 import os
-import shutil
 import numpy as np
-from PIL import Image
 
 
 def model_form_upload(request):
@@ -26,12 +24,10 @@ def model_form_upload(request):
             form = DocumentForm()
             return redirect('calc')
     else:
-        input_path = None
         form = DocumentForm()
         
     return render(request, 'reiwa_app/model_form_upload.html', {
         'form': form,
-        'path': input_path
     })
 
 def calc(request):
