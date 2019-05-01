@@ -10,7 +10,7 @@ from PIL import Image
 
 def model_form_upload(request):
     global input_path
-    form = None
+    global form
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         # max_id = Document.objects.latest('id').id
@@ -20,14 +20,12 @@ def model_form_upload(request):
 
         if form.is_valid():
             form.save()
+            form = None
             return redirect('result')
     else:
         form = DocumentForm()
-        # max_id = Document.objects.latest('id').id
-        # obj = Document.objects.get(id = max_id)
-        # input_path = settings.BASE_DIR + obj.photo.url
-        # input_path = settings.BASE_DIR + request.FILES
-
+        input_path = None    
+        
     return render(request, 'reiwa_app/model_form_upload.html', {
         'form': form
     })
