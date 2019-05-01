@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect, HttpResponse
 from .forms import DocumentForm
 from .models import Document
 from reiwa_prj import settings
+from django.core.cache import cache
+from django.views.decorators.cache import never_cache
 import numpy as np
 import cv2
 import os
@@ -52,6 +54,7 @@ def calc(request):
 def result(request):
     if request.method == 'POST':
         os.remove(input_path)
+        cache.clear()
         return redirect('upload')
     return render(request, 'reiwa_app/result.html', {
                 'data': input_path,
