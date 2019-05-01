@@ -10,7 +10,7 @@ from PIL import Image
 
 def model_form_upload(request):
     global input_path
-    global obj
+    form = None
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         # max_id = Document.objects.latest('id').id
