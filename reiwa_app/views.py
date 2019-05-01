@@ -21,16 +21,15 @@ def model_form_upload(request):
         if form.is_valid():
             form.save()
             form = None
-            return redirect('result')
+            return redirect('calc')
     else:
         form = DocumentForm()
-        input_path = None    
         
     return render(request, 'reiwa_app/model_form_upload.html', {
         'form': form
     })
 
-def result(request):
+def calc(request):
     if request.method == 'POST':
         return redirect('upload')
 
@@ -40,10 +39,16 @@ def result(request):
     image_path = cv2.resize(image_path, (32, 32))
     reiwa_path = np.ravel(reiwa_path)
     image_path = np.ravel(image_path)
+    global similarity
     similarity = round(1e7 * np.dot(image_path, reiwa_path) / (np.linalg.norm(image_path) * np.linalg.norm(reiwa_path)))
+    return redirect('result')
+    
+
+def result(request):
+    if request.method == 'POST':
+        return redirect('upload')
     return render(request, 'reiwa_app/result.html', {
                 'data': input_path,
                 'similarity': similarity,
             })
-    
     
