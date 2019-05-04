@@ -12,12 +12,9 @@
             <p><b><span class="rate" style="font-size: 50px;">{{ similarity }}</span>%</b></p>
         </div>
         <div class="again">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
                     {{ reiwa_path }}
                     {{ image_path }}
-                    <button class="upload-button" type="submit">もう一度チャレンジ</button>
-                </form>
+                    <a href="/"><button class="upload-button" type="submit">もう一度チャレンジ</button></a>
         </div>
         <div class="share-form">
             <b class="share-p">みんなにシェアしよう！</b>
