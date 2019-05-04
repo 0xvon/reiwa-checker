@@ -38,8 +38,8 @@ def model_form_upload(request):
                 similarity = 35.0 
             return render(request, 'reiwa_app/result.html', {
                 'data': input_path,
-                'similarity': similarity,
-                'eucrid_distance': eucrid_distance
+                'similarity': similarity
+                # 'eucrid_distance': eucrid_distance
             })
     else:
         form = DocumentForm()
