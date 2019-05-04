@@ -26,17 +26,20 @@ def model_form_upload(request):
             image_path = np.ravel(image_path)
             similarity = round(1e7 * np.dot(image_path, reiwa_path) / (np.linalg.norm(image_path) * np.linalg.norm(reiwa_path)))
             eucrid_distance = np.linalg.norm(np.abs(reiwa_path - image_path), ord=2)
-            if eucrid_distance < 1:
+            if eucrid_distance < 5000:
                 similarity = 100.0
-            elif eucrid_distance < 10:
+            elif eucrid_distance < 10000:
                 similarity = 80.0
-            elif eucrid_distance < 100:
+            elif eucrid_distance < 13599:
                 similarity = 60.0
-            elif eucrid_distance < 300:
+            elif eucrid_distance < 20000:
                 similarity = 50.0
+            elif eucrid_distance > 30000:
+                similarity = 35.0 
             return render(request, 'reiwa_app/result.html', {
                 'data': input_path,
-                'similarity': similarity
+                'similarity': similarity,
+                'eucrid_distance': eucrid_distance
             })
     else:
         form = DocumentForm()
