@@ -14,11 +14,12 @@
                 61〜80% ¥20,000引き<br>
                 81〜99% ¥25,000引き<br>
                 100%  ¥30,000引き<br>
-                キャンペーン期間5/1~5/14<br>
+                キャンペーン期間5/10~5/24<br>
                 割引有効期限は5/31まで</p>
         </div>
         <form method="post" enctype="multipart/form-data">
             <div class="up-form">
+                {{ error_message }}
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>

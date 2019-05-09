@@ -12,6 +12,13 @@ import time
 
 def model_form_upload(request):
     if request.method == 'POST':
+        if request.FILES == None:
+            form = DocumentForm()
+            cache.clear()
+            return render(request, 'reiwa_app/model_form_upload.html', {
+                'form': form,
+                'error_message': 'ファイルを選択してください'
+            })
         form = DocumentForm(request.POST, request.FILES)
         input_path = settings.MEDIA_URL + "documents/" + str(request.FILES['photo'])
         if form.is_valid():
@@ -20,6 +27,13 @@ def model_form_upload(request):
             time.sleep(3)
             reiwa_path = cv2.imread("reiwa_app/static/reiwa_app/assets/reiwa.jpg", 0)
             image_path = cv2.imread(input_path, 0)
+            if image_path == None:
+                form = DocumentForm()
+                cache.clear()
+                return render(request, 'reiwa_app/model_form_upload.html', {
+                    'form': form,
+                    'error_message': 'ファイル名が正しくありません'
+                })
             reiwa_path = cv2.resize(reiwa_path, (100, 100))
             image_path = cv2.resize(image_path, (100, 100))
             reiwa_path = np.ravel(reiwa_path)
@@ -38,6 +52,13 @@ def model_form_upload(request):
                 'data': input_path,
                 'similarity': similarity
                 # 'eucrid_distance': eucrid_distance
+            })
+        else:
+            form = DocumentForm()
+            cache.clear()
+            return render(request, 'reiwa_app/model_form_upload.html', {
+                'form': form,
+                'error_message': '<p>エラーーーーーー</p>'
             })
     else:
         form = DocumentForm()
