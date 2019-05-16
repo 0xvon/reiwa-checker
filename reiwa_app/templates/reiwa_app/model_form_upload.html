@@ -7,20 +7,21 @@
     <div class="hero-body">
         <b class="hero-heading">令和類似度チェッカー</b>
         <div class="description">
-            <p>「令和おじさん」にどれだけ似せられるかな？<br>
+            <p>あの記者会見次の「令和」にどれだけ似せられますか？<br>
                 類似度に応じて<b>Aidemyプレミアムプラン割引クーポン</b>を発行！<br>
                 0〜40% ¥5,000引き<br>
                 41〜60% ¥10,000引き<br>
                 61〜80% ¥20,000引き<br>
                 81〜99% ¥25,000引き<br>
                 100%  ¥30,000引き<br>
-                キャンペーン期間5/10~5/24<br>
-                割引有効期限は5/31まで</p>
+                キャンペーン期間5/18~5/31<br>
+                割引有効期限は6/15まで<br>
+                注意: ファイル名に記号やスペースが入っていると正しく読み込めませんのでご注意ください。
+            </p>
         </div>
         <form method="post" enctype="multipart/form-data">
             <div class="up-form">
                 <p class="error-message">{{ error_message }}</p>
-                
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
