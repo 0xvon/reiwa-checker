@@ -19,7 +19,8 @@
         </div>
         <form method="post" enctype="multipart/form-data">
             <div class="up-form">
-                {{ error_message }}
+                <p class="error-message">{{ error_message }}</p>
+                
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
